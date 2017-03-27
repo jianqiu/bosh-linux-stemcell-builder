@@ -8,9 +8,8 @@ image_resource:
 
 inputs:
   - name: bosh-linux-stemcell-builder
+  - name: stemcell
   - name: version
-outputs:
-  - name: version-tag
 
 run:
   path: bosh-linux-stemcell-builder/ci/tasks/publish.sh

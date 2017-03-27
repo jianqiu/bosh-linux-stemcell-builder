@@ -11,6 +11,12 @@ function fromEnvironment() {
   cat $environment | jq -r "$key"
 }
 
+function cp_artifacts {
+   mv $HOME/.bosh director-state/
+   mv director.yml director-creds.yml director-state.json director-state/
+}
+trap cp_artifacts EXIT
+
 export BOSH_sl_datacenter=$(fromEnvironment '.network1.softlayerDatacenter')
 export BOSH_internal_cidr=$(fromEnvironment '.network1.softlayerCIDR')
 export BOSH_internal_gw=$(fromEnvironment '.network1.softlayerGateway')

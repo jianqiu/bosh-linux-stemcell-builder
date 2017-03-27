@@ -1,0 +1,13 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: boshcpi/cpi-certification}
+
+inputs:
+  - name: published-stemcell
+  - name: bosh-linux-stemcell-builder
+outputs:
+  - name: version
+run:
+  path: bosh-softlayer-tools/ci/tasks/generate-softlayer-stemcell-version-from-published-stemcell.sh
