@@ -242,6 +242,8 @@ jobs:
         - get: version
           trigger: true
           passed: [import-softlayer-stemcell]
+        - get: softlayer-xen-ubuntu-trusty
+          passed: [build-softlayer-xen-ubuntu-trusty]
       - task: create-light-stemcell
         file: bosh-softlayer-tools/ci/tasks/create-light-stemcell.yml
         params:
@@ -252,6 +254,8 @@ jobs:
           SL_USERNAME: {{softlayer-username}}
           SL_API_KEY: {{softlayer-api-key}}
           BOSHIO_TOKEN: ec74e6889e4686117d8248af1716d9443df8104cac89f719e58c17534b57704897dd37716724854c
+        input_mapping:
+          stemcell: softlayer-xen-ubuntu-trusty
       - put: light-softlayer-stemcell
         params: {file: light-stemcell/*.tgz}
 

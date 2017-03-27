@@ -16,3 +16,6 @@ if [[ "$published_version" == *.* ]]; then
 else
 	echo "${published_version}.0.0" > "${output_dir}/number" # fill in minor.patch
 fi
+
+# Hardcode the version number
+echo "3363.14.0" > "${output_dir}/number"
