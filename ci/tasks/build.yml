@@ -9,7 +9,7 @@ image_resource:
 inputs:
   - name: bosh-src
   - name: bosh-linux-stemcell-builder
-  - name: version-hvm
+  - name: hvm-version
 
 outputs:
   - name: stemcell

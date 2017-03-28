@@ -9,7 +9,7 @@ inputs:
   - name: version
   - name: bosh-linux-stemcell-builder
 outputs:
-  - name: version-hvm
+  - name: hvm-version-info
 
 run:
   path: bosh-linux-stemcell-builder/ci/tasks/make-hvm-version.sh

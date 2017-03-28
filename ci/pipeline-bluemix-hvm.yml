@@ -101,16 +101,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: {{stemcell-aws-secret-key}}
           CANDIDATE_BUCKET_NAME: {{candidate-bluemix-stemcell-bucket}}
           PUBLISHED_BUCKET_NAME: {{published-bluemix-stemcell-bucket}}
-      - put: version-hvm
+      - put: hvm-version
         params:
-          file: version/number-hvm
+          file: hvm-version-info/hvm-version
 
 
   - name: test-stemcells
     serial: true
     plan:
       - aggregate:
-        - get: version-hvm
+        - get: hvm-version
           passed:
             - create-softlayer-light-stemcell
         - get: bosh-linux-stemcell-builder
@@ -153,7 +153,7 @@ jobs:
     serial: true
     plan:
       - aggregate:
-        - get: version-hvm
+        - get: hvm-version
           passed:
             - bats-ubuntu
         - get: bosh-linux-stemcell-builder
@@ -179,7 +179,7 @@ jobs:
   - name: build-softlayer-xen-ubuntu-trusty
     plan:
       - aggregate:
-          - get: version-hvm
+          - get: hvm-version
           - get: bosh-linux-stemcell-builder
           - get: bosh-src
       - task: create-stemcell
@@ -198,7 +198,7 @@ jobs:
   - name: convert-softlayer-stemcell
     plan:
       - aggregate:
-          - get: version-hvm
+          - get: hvm-version
             trigger: true
             passed: [build-softlayer-xen-ubuntu-trusty]
           - get: bosh-softlayer-tools
@@ -222,7 +222,7 @@ jobs:
   - name: import-softlayer-stemcell
     plan:
       - get: bosh-softlayer-tools
-      - get: version-hvm
+      - get: hvm-version
         trigger: true
         passed: [convert-softlayer-stemcell]
       - task: import-stemcell-image
@@ -248,7 +248,7 @@ jobs:
         - get: stemcell-info
           trigger: true
           passed: [import-softlayer-stemcell]
-        - get: version-hvm
+        - get: hvm-version
           trigger: true
           passed: [import-softlayer-stemcell]
         - get: softlayer-xen-ubuntu-trusty
@@ -284,7 +284,7 @@ jobs:
         - get: bosh-cli
         - get: bats
         - get: bosh-linux-stemcell-builder
-        - get: version-hvm
+        - get: hvm-version
           passed:
             - create-softlayer-light-stemcell
 
@@ -331,13 +331,13 @@ resources:
       access_key_id: {{stemcell-aws-access-key}}
       secret_access_key: {{stemcell-aws-secret-key}}
 
-  - name: version-hvm
+  - name: hvm-version
     type: s3
     source:
       bucket: {{candidate-bluemix-stemcell-bucket}}
       access_key_id: {{stemcell-aws-access-key}}
       secret_access_key: {{stemcell-aws-secret-key}}
-      versioned_file: bluemix-stemcell/version-hvm
+      versioned_file: hvm-version
 
   - name: stemcell-info
     type: s3
