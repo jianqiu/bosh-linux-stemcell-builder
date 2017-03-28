@@ -11,4 +11,4 @@ outputs:
   - name: version-hvm
 
 run:
-  path: bosh-linux-stemcell-builder/ci/tasks/convert-stemcell.sh
+  path: bosh-linux-stemcell-builder/ci/tasks/make-hvm-version.sh
