@@ -2,7 +2,7 @@
 
 set -e
 
-export CANDIDATE_BUILD_NUMBER=$( cat version/number | sed 's/\.0$//;s/\.0$//' )
+export CANDIDATE_BUILD_NUMBER=$( cat version/number-hvm | sed 's/\.0$//;s/\.0$//' )
 
 cd stemcell
 

@@ -2,7 +2,7 @@
 
 set -u
 
-export VERSION=$( cat version/number | sed 's/\.0$//;s/\.0$//' )
+export VERSION=$( cat version/number-hvm | sed 's/\.0$//;s/\.0$//' )
 stemcell=$(realpath stemcell/*.tgz)
 
 for file in $COPY_KEYS ; do

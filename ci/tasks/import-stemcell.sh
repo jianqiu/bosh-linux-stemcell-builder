@@ -5,7 +5,7 @@ set -e
 export bosh_softlayer_tool=$(realpath bosh-softlayer-tools/*)
 chmod +x $bosh_softlayer_tool
 
-export CANDIDATE_BUILD_NUMBER=$( cat version/number | sed 's/\.0$//;s/\.0$//' )
+export CANDIDATE_BUILD_NUMBER=$( cat version/number-hvm | sed 's/\.0$//;s/\.0$//' )
 
 echo -e "\n Get stemcell vhd filename..."
 stemcell_name="bosh-stemcell-$CANDIDATE_BUILD_NUMBER-$IAAS-esxi-$OS_NAME-$OS_VERSION-go_agent"

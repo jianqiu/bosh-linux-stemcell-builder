@@ -10,7 +10,7 @@ output_dir="light-stemcell"
 mkdir -p ${output_dir}
 
 echo -e "\n Get stemcell version..."
-stemcell_version=$(cat version/number | sed 's/\.0$//;s/\.0$//')
+stemcell_version=$(cat version/number-hvm | sed 's/\.0$//;s/\.0$//')
 
 echo -e "\n Softlayer creating light stemcell..."
 $bosh_softlayer_tool -c light-stemcell --version ${stemcell_version} --stemcell-info-filename "${base_gopath}/../stemcell-info/stemcell-info.json"
