@@ -6,8 +6,6 @@ image_resource:
     repository: posijon/slci
 
 inputs:
-  - name: bosh-linux-stemcell-builder
-  - name: stemcell
   - name: version-hvm
 
 run:

@@ -8,7 +8,7 @@ image_resource:
 inputs:
   - name: bosh-softlayer-tools
   - name: stemcell-info
-  - name: version
+  - name: version-hvm
 outputs:
   - name: light-stemcell
 

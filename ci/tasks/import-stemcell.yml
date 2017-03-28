@@ -6,7 +6,7 @@ image_resource:
     repository: zhanggongsw/bosh
 
 inputs:
-  - name: version
+  - name: version-hvm
   - name: bosh-linux-stemcell-builder
   - name: bosh-softlayer-tools
 
