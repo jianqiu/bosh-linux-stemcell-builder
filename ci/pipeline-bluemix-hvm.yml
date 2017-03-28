@@ -90,6 +90,7 @@ jobs:
           file: version/number
 
   - name: make-hvm-version
+    serial: true
     plan:
       - get: version
       - get: bosh-linux-stemcell-builder
