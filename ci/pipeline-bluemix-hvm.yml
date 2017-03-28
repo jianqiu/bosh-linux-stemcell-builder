@@ -308,7 +308,7 @@ resources:
     type: git
     source:
       uri: https://github.com/jianqiu/bosh-linux-stemcell-builder
-      branch: {{bluemix-stemcell-branch}}
+      branch: {{bluemix-hvm-stemcell-branch}}
 
   - name: bosh-src
     type: git

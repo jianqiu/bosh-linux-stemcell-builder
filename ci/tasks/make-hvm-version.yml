@@ -6,6 +6,8 @@ image_resource:
     repository: posijon/slci
 
 inputs:
+  - name: version
+outputs:
   - name: version-hvm
 
 run:
